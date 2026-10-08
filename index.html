@@ -1,13 +1,1667 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uz">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  
 
-  <link rel="stylesheet" href="./script.js">
+  <title>Kechmas — O‘zgarishni vaqtida ko‘ring</title>
+
+  <meta
+    name="description"
+    content="Kechmas — farzandingizning bilim, qiziqish va rivojlanishidagi o‘zgarishlarni vaqtida ko‘rishga yordam beradigan platforma."
+  >
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Inter", "system-ui", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-slate-950 text-white">
+
+<!-- =========================================================
+     BACKGROUND
+========================================================= -->
+
+<div class="fixed inset-0 -z-50 overflow-hidden">
+  <div class="glow glow-one"></div>
+  <div class="glow glow-two"></div>
+  <div class="glow glow-three"></div>
+</div>
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<header
+  id="navbar"
+  class="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-slate-950/75 backdrop-blur-xl"
+>
+
+  <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
+
+    <button
+      onclick="goHome()"
+      class="flex items-center gap-3"
+    >
+
+      <div class="logo-box">
+        K
+      </div>
+
+      <div class="text-left">
+        <div class="text-lg font-black">
+          Kechmas
+        </div>
+
+        <div class="text-[10px] uppercase tracking-widest text-slate-500">
+          Education Intelligence
+        </div>
+      </div>
+
+    </button>
+
+
+    <div class="hidden items-center gap-7 md:flex">
+
+      <button onclick="scrollToId('muammo')" class="nav-link">
+        Muammo
+      </button>
+
+      <button onclick="scrollToId('yechim')" class="nav-link">
+        Yechim
+      </button>
+
+      <button onclick="scrollToId('qanday')" class="nav-link">
+        Qanday ishlaydi
+      </button>
+
+      <button
+        onclick="openAuth('login')"
+        class="rounded-xl border border-white/10 px-4 py-2 text-sm font-semibold hover:bg-white/5"
+      >
+        Kirish
+      </button>
+
+      <button
+        onclick="openAuth('register')"
+        class="rounded-xl bg-white px-5 py-2.5 text-sm font-bold text-slate-950 transition hover:scale-105"
+      >
+        Boshlash
+      </button>
+
+    </div>
+
+
+    <button
+      onclick="toggleMobileMenu()"
+      class="rounded-xl border border-white/10 px-3 py-2 md:hidden"
+    >
+      ☰
+    </button>
+
+  </nav>
+
+
+  <div
+    id="mobileMenu"
+    class="hidden border-t border-white/10 bg-slate-950 px-5 py-5 md:hidden"
+  >
+
+    <div class="flex flex-col gap-4">
+
+      <button onclick="scrollToId('muammo'); toggleMobileMenu()">
+        Muammo
+      </button>
+
+      <button onclick="scrollToId('yechim'); toggleMobileMenu()">
+        Yechim
+      </button>
+
+      <button onclick="scrollToId('qanday'); toggleMobileMenu()">
+        Qanday ishlaydi
+      </button>
+
+      <button
+        onclick="openAuth('login'); toggleMobileMenu()"
+        class="rounded-xl border border-white/10 py-3"
+      >
+        Kirish
+      </button>
+
+      <button
+        onclick="openAuth('register'); toggleMobileMenu()"
+        class="rounded-xl bg-white py-3 font-bold text-slate-950"
+      >
+        Boshlash
+      </button>
+
+    </div>
+
+  </div>
+
+</header>
+
+
+<!-- =========================================================
+     LANDING PAGE
+========================================================= -->
+
+<main id="landingPage">
+
+<!-- HERO -->
+
+<section class="relative flex min-h-screen items-center px-5 pt-32">
+
+  <div class="mx-auto grid max-w-7xl items-center gap-16 lg:grid-cols-2">
+
+    <div class="reveal">
+
+      <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-xs font-semibold text-cyan-300">
+
+        <span class="pulse-dot"></span>
+
+        AI Education Monitoring
+
+      </div>
+
+
+      <h1 class="max-w-4xl text-5xl font-black leading-[1.03] tracking-tight sm:text-6xl lg:text-7xl">
+
+        Kech bo‘lishini
+
+        <span class="block">
+          kutmang.
+        </span>
+
+        <span class="gradient-text block">
+          O‘zgarishni vaqtida ko‘ring.
+        </span>
+
+      </h1>
+
+
+      <p class="mt-7 max-w-2xl text-lg leading-8 text-slate-400">
+
+        Farzandingiz shunchaki o‘qiyaptimi yoki haqiqatan
+        rivojlanyaptimi? Kechmas bilim, qiziqish, faollik va
+        rivojlanishdagi o‘zgarishlarni kuzatishga yordam beradi.
+
+      </p>
+
+
+      <div class="mt-9 flex flex-col gap-4 sm:flex-row">
+
+        <button
+          onclick="openAuth('register')"
+          class="primary-button"
+        >
+          🚀 Bepul boshlash
+        </button>
+
+        <button
+          onclick="scrollToId('qanday')"
+          class="secondary-button"
+        >
+          Qanday ishlaydi?
+        </button>
+
+      </div>
+
+
+      <div class="mt-10 flex flex-wrap gap-8">
+
+        <div>
+          <strong class="text-2xl">24/7</strong>
+          <p class="text-xs text-slate-500">Kuzatuv</p>
+        </div>
+
+        <div>
+          <strong class="text-2xl">AI</strong>
+          <p class="text-xs text-slate-500">Tahlil</p>
+        </div>
+
+        <div>
+          <strong class="text-2xl">30 kun</strong>
+          <p class="text-xs text-slate-500">Shaxsiy reja</p>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- HERO DASHBOARD -->
+
+    <div class="animate-float">
+
+      <div class="dashboard-window">
+
+        <div class="mb-6 flex items-center justify-between">
+
+          <div>
+            <p class="text-xs text-slate-500">
+              Farzand profili
+            </p>
+
+            <h2 class="text-xl font-black">
+              Ali Abduganiyev
+            </h2>
+          </div>
+
+          <span class="status-green">
+            ● Faol
+          </span>
+
+        </div>
+
+
+        <div class="grid grid-cols-2 gap-3">
+
+          <div class="mini-stat">
+            <p>Rivojlanish</p>
+            <strong>78%</strong>
+            <span class="up">↑ 8%</span>
+          </div>
+
+          <div class="mini-stat">
+            <p>Qiziqish</p>
+            <strong>64%</strong>
+            <span class="down">↓ 6%</span>
+          </div>
+
+          <div class="mini-stat">
+            <p>Faollik</p>
+            <strong>71%</strong>
+            <span class="up">↑ 4%</span>
+          </div>
+
+          <div class="mini-stat">
+            <p>Davomat</p>
+            <strong>92%</strong>
+            <span class="up">↑ 2%</span>
+          </div>
+
+        </div>
+
+
+        <div class="mt-4 rounded-2xl border border-white/10 bg-black/20 p-5">
+
+          <div class="mb-5 flex items-center justify-between">
+
+            <div>
+              <p class="text-xs text-slate-500">
+                Rivojlanish dinamikasi
+              </p>
+
+              <strong class="text-2xl">
+                +18%
+              </strong>
+            </div>
+
+            <span class="status-green">
+              Yaxshi
+            </span>
+
+          </div>
+
+
+          <div class="chart">
+
+            <div class="bar h-[35%]"></div>
+            <div class="bar h-[44%]"></div>
+            <div class="bar h-[48%]"></div>
+            <div class="bar h-[57%]"></div>
+            <div class="bar h-[54%]"></div>
+            <div class="bar h-[68%]"></div>
+            <div class="bar h-[78%]"></div>
+
+          </div>
+
+        </div>
+
+
+        <div class="warning-box mt-4">
+
+          <div class="text-xl">
+            ⚠️
+          </div>
+
+          <div>
+
+            <strong>
+              E’tibor kerak
+            </strong>
+
+            <p>
+              Ingliz tilidagi qiziqish so‘nggi
+              2 oyda pasaygan.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     MUAMMO
+========================================================= -->
+
+<section
+  id="muammo"
+  class="section-padding"
+>
+
+  <div class="mx-auto max-w-5xl text-center reveal">
+
+    <span class="section-label">
+      Muammo
+    </span>
+
+    <h2 class="section-title">
+
+      Bola o‘qiyotgan bo‘lishi mumkin.
+
+      <span>
+        Ammo rivojlanayaptimi?
+      </span>
+
+    </h2>
+
+    <p class="section-description">
+
+      Ota-ona farzandi uchun oylar va yillar davomida
+      vaqt, kuch va mablag‘ sarflaydi. Lekin bolaning
+      qiziqishi yoki natijasi pasayayotganini vaqtida
+      sezmasligi mumkin.
+
+    </p>
+
+
+    <div class="mt-12 grid gap-5 text-left md:grid-cols-3">
+
+      <div class="problem-card">
+
+        <div class="problem-icon">
+          💸
+        </div>
+
+        <h3>
+          Mablag‘
+        </h3>
+
+        <p>
+          Repetitor, kurs va qo‘shimcha ta’limga
+          sarflangan mablag‘ kutilgan natijani bermasligi mumkin.
+        </p>
+
+      </div>
+
+
+      <div class="problem-card">
+
+        <div class="problem-icon">
+          ⏳
+        </div>
+
+        <h3>
+          Vaqt
+        </h3>
+
+        <p>
+          Muammo kech aniqlansa, bolaning qiziqishini
+          qayta tiklash uchun ko‘proq vaqt talab qilinishi mumkin.
+        </p>
+
+      </div>
+
+
+      <div class="problem-card">
+
+        <div class="problem-icon">
+          📉
+        </div>
+
+        <h3>
+          Pasayish
+        </h3>
+
+        <p>
+          Natija, faollik va qiziqish sekin pasayishi
+          dastlab ko‘zga tashlanmasligi mumkin.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     YECHIM
+========================================================= -->
+
+<section
+  id="yechim"
+  class="section-padding border-y border-white/5 bg-white/[0.02]"
+>
+
+  <div class="mx-auto max-w-7xl">
+
+    <div class="max-w-3xl reveal">
+
+      <span class="section-label">
+        Yechim
+      </span>
+
+      <h2 class="section-title text-left">
+
+        Muammoni kech emas,
+
+        <span>
+          erta ko‘ring.
+        </span>
+
+      </h2>
+
+      <p class="mt-6 text-lg leading-8 text-slate-400">
+
+        Kechmas bolaning rivojlanishidagi o‘zgarishlarni
+        muntazam kuzatadi, ehtimoliy pasayishlarni ko‘rsatadi
+        va ota-onaga keyingi qadamlar uchun tushunarli
+        tavsiyalar beradi.
+
+      </p>
+
+    </div>
+
+
+    <div class="mt-14 grid gap-5 md:grid-cols-3">
+
+      <div class="feature-card reveal">
+
+        <div class="feature-icon">
+          📊
+        </div>
+
+        <h3>
+          Doimiy kuzatuv
+        </h3>
+
+        <p>
+          Bilim, qiziqish, faollik va rivojlanish
+          dinamikasini vaqt davomida ko‘ring.
+        </p>
+
+      </div>
+
+
+      <div class="feature-card reveal">
+
+        <div class="feature-icon">
+          ⚠️
+        </div>
+
+        <h3>
+          Early Warning
+        </h3>
+
+        <p>
+          Pasayish boshlanganda ota-onaga signal berish
+          orqali muammoni vaqtida ko‘rishga yordam beradi.
+        </p>
+
+      </div>
+
+
+      <div class="feature-card reveal">
+
+        <div class="feature-icon">
+          🎯
+        </div>
+
+        <h3>
+          Individual reja
+        </h3>
+
+        <p>
+          Bola holatiga mos 30 kunlik rivojlanish
+          rejasini shakllantirishga yordam beradi.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     QANDAY ISHLAYDI
+========================================================= -->
+
+<section
+  id="qanday"
+  class="section-padding"
+>
+
+  <div class="mx-auto max-w-7xl">
+
+    <div class="text-center reveal">
+
+      <span class="section-label">
+        Qanday ishlaydi?
+      </span>
+
+      <h2 class="section-title">
+        Oddiy.
+        <span> Tushunarli. </span>
+        Foydali.
+      </h2>
+
+    </div>
+
+
+    <div class="mt-16 grid gap-5 md:grid-cols-4">
+
+      <div class="step-card">
+        <span>01</span>
+        <div class="step-number">👤</div>
+        <h3>Profil</h3>
+        <p>
+          Ota-ona akkaunt yaratadi va farzandini qo‘shadi.
+        </p>
+      </div>
+
+
+      <div class="step-card">
+        <span>02</span>
+        <div class="step-number">📚</div>
+        <h3>Kuzatuv</h3>
+        <p>
+          Ta’lim natijalari, qiziqish va faollik ma’lumotlari yig‘iladi.
+        </p>
+      </div>
+
+
+      <div class="step-card">
+        <span>03</span>
+        <div class="step-number">🤖</div>
+        <h3>AI tahlil</h3>
+        <p>
+          Tizim vaqt davomida o‘zgarishlarni tahlil qiladi.
+        </p>
+      </div>
+
+
+      <div class="step-card">
+        <span>04</span>
+        <div class="step-number">🎯</div>
+        <h3>Harakat</h3>
+        <p>
+          Ota-ona tavsiyalar va keyingi qadamlarni ko‘radi.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     COST CALCULATOR
+========================================================= -->
+
+<section class="section-padding bg-white/[0.02]">
+
+  <div class="mx-auto max-w-6xl">
+
+    <div class="text-center">
+
+      <span class="section-label">
+        Hisoblang
+      </span>
+
+      <h2 class="section-title">
+        Ta’lim xarajatingizni
+        <span>ko‘ring.</span>
+      </h2>
+
+      <p class="section-description">
+        Agar oyiga ma’lum miqdorda pul sarflayotgan bo‘lsangiz,
+        bir yil davomida qancha bo‘lishini hisoblab ko‘ring.
+      </p>
+
+    </div>
+
+
+    <div class="mt-12 grid gap-6 md:grid-cols-2">
+
+      <div class="glass-card">
+
+        <label class="input-label">
+          Oyiga ta’lim xarajati
+        </label>
+
+        <div class="relative mt-3">
+
+          <input
+            id="monthlyCost"
+            type="number"
+            value="700000"
+            min="0"
+            oninput="calculateCost()"
+            class="money-input"
+          >
+
+          <span class="absolute right-5 top-1/2 -translate-y-1/2 text-slate-500">
+            so‘m
+          </span>
+
+        </div>
+
+
+        <label class="input-label mt-6">
+          Necha yil?
+        </label>
+
+        <input
+          id="yearsCost"
+          type="number"
+          value="1"
+          min="1"
+          max="20"
+          oninput="calculateCost()"
+          class="normal-input"
+        />
+
+      </div>
+
+
+      <div class="glass-card">
+
+        <p class="text-sm text-slate-500">
+          Taxminiy xarajat
+        </p>
+
+        <div
+          id="yearlyCost"
+          class="mt-3 text-4xl font-black text-cyan-300"
+        >
+          8 400 000 so‘m
+        </div>
+
+        <p class="mt-4 text-sm leading-7 text-slate-400">
+          Bu hisob faqat matematik hisob-kitob.
+          Platforma ta’lim xarajati natijasini kafolatlamaydi.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     CTA
+========================================================= -->
+
+<section class="section-padding">
+
+  <div class="mx-auto max-w-5xl">
+
+    <div class="cta-box text-center reveal">
+
+      <div class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-white text-2xl text-slate-950">
+        K
+      </div>
+
+      <h2 class="text-4xl font-black md:text-6xl">
+
+        Farzandingizning kelajagini
+
+        <span class="block text-cyan-300">
+          bugundan kuzating.
+        </span>
+
+      </h2>
+
+      <p class="mx-auto mt-6 max-w-2xl leading-8 text-slate-400">
+
+        Kech bo‘lishini kutmang.
+        O‘zgarishni vaqtida ko‘ring.
+
+      </p>
+
+      <button
+        onclick="openAuth('register')"
+        class="primary-button mt-8"
+      >
+        🚀 Boshlash
+
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<!-- =========================================================
+     APP DASHBOARD
+========================================================= -->
+
+<div
+  id="dashboardPage"
+  class="hidden min-h-screen pt-24"
+>
+
+  <div class="mx-auto max-w-7xl px-5 pb-20">
+
+
+    <!-- DASHBOARD HEADER -->
+
+    <div class="mb-8 flex flex-col justify-between gap-5 md:flex-row md:items-center">
+
+      <div>
+
+        <p class="text-sm text-slate-500">
+          Ota-ona paneli
+        </p>
+
+        <h1 class="mt-1 text-3xl font-black">
+          Xush kelibsiz, <span id="parentName">Ota-ona</span> 👋
+        </h1>
+
+      </div>
+
+
+      <div class="flex gap-3">
+
+        <button
+          onclick="toggleTheme()"
+          class="icon-button"
+          title="Tema"
+        >
+          🌙
+        </button>
+
+        <button
+          onclick="logout()"
+          class="rounded-xl border border-white/10 px-4 py-2 text-sm hover:bg-white/5"
+        >
+          Chiqish
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- CHILD SELECTOR -->
+
+    <div class="glass-card mb-6">
+
+      <div class="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+
+        <div class="flex items-center gap-4">
+
+          <div
+            id="childAvatar"
+            class="avatar-large"
+          >
+            A
+          </div>
+
+          <div>
+
+            <p class="text-xs text-slate-500">
+              Tanlangan farzand
+            </p>
+
+            <h2
+              id="childName"
+              class="text-xl font-black"
+            >
+              Ali Abduganiyev
+            </h2>
+
+            <p
+              id="childAge"
+              class="text-sm text-slate-500"
+            >
+              15 yosh
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <button
+          onclick="openChildModal()"
+          class="rounded-xl bg-white/5 px-5 py-3 text-sm font-semibold hover:bg-white/10"
+        >
+          + Farzand qo‘shish
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- WARNING -->
+
+    <div
+      id="mainWarning"
+      class="warning-large mb-6"
+    >
+
+      <div class="warning-large-icon">
+        ⚠️
+      </div>
+
+      <div class="flex-1">
+
+        <p class="text-xs font-bold uppercase tracking-widest text-amber-300">
+          Erta signal
+        </p>
+
+        <h3 class="mt-1 text-xl font-black">
+          Qiziqish pasayish tendensiyasida
+        </h3>
+
+        <p class="mt-2 max-w-3xl text-sm leading-6 text-slate-400">
+          Ingliz tilidagi qiziqish so‘nggi 2 oyda pasaygan.
+          Bu avtomatik tashxis emas. Holatni qo‘shimcha
+          ma’lumotlar bilan tekshirish tavsiya etiladi.
+        </p>
+
+      </div>
+
+      <button
+        onclick="showAIAnalysis()"
+        class="rounded-xl bg-amber-400 px-5 py-3 text-sm font-black text-slate-950"
+      >
+        Tahlil qilish
+      </button>
+
+    </div>
+
+
+    <!-- TOP STATS -->
+
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+
+      <div class="dashboard-big-card">
+        <div class="dashboard-card-icon">
+          📈
+        </div>
+
+        <p>
+          Umumiy rivojlanish
+        </p>
+
+        <strong>
+          78%
+        </strong>
+
+        <span class="text-emerald-400">
+          ↑ 8% bu oy
+        </span>
+      </div>
+
+
+      <div class="dashboard-big-card">
+        <div class="dashboard-card-icon">
+          ❤️
+        </div>
+
+        <p>
+          Qiziqish
+        </p>
+
+        <strong>
+          64%
+        </strong>
+
+        <span class="text-rose-400">
+          ↓ 6% bu oy
+        </span>
+      </div>
+
+
+      <div class="dashboard-big-card">
+        <div class="dashboard-card-icon">
+          ⚡
+        </div>
+
+        <p>
+          Faollik
+        </p>
+
+        <strong>
+          71%
+        </strong>
+
+        <span class="text-emerald-400">
+          ↑ 4% bu oy
+        </span>
+      </div>
+
+
+      <div class="dashboard-big-card">
+        <div class="dashboard-card-icon">
+          🎯
+        </div>
+
+        <p>
+          Maqsadga yaqinlik
+        </p>
+
+        <strong>
+          73%
+        </strong>
+
+        <span class="text-emerald-400">
+          ↑ 5% bu oy
+        </span>
+      </div>
+
+    </div>
+
+
+    <!-- CONTENT GRID -->
+
+    <div class="mt-6 grid gap-6 lg:grid-cols-3">
+
+
+      <!-- SUBJECTS -->
+
+      <div class="glass-card lg:col-span-2">
+
+        <div class="flex items-center justify-between">
+
+          <div>
+
+            <p class="text-xs text-slate-500">
+              Fanlar
+            </p>
+
+            <h2 class="text-2xl font-black">
+              Rivojlanish holati
+            </h2>
+
+          </div>
+
+          <button
+            onclick="openSubjectModal()"
+            class="text-sm font-semibold text-cyan-300"
+          >
+            + Fan
+          </button>
+
+        </div>
+
+
+        <div id="subjectsContainer" class="mt-6 space-y-4">
+
+          <!-- JS fills -->
+
+        </div>
+
+      </div>
+
+
+      <!-- AI SUMMARY -->
+
+      <div class="glass-card">
+
+        <div class="flex items-center gap-3">
+
+          <div class="ai-icon">
+            ✨
+          </div>
+
+          <div>
+
+            <p class="text-xs text-slate-500">
+              AI Mentor
+            </p>
+
+            <h3 class="font-black">
+              Bugungi xulosa
+            </h3>
+
+          </div>
+
+        </div>
+
+
+        <div
+          id="aiSummary"
+          class="mt-5 rounded-2xl border border-cyan-400/10 bg-cyan-400/5 p-4 text-sm leading-7 text-slate-300"
+        >
+
+          Ali umumiy rivojlanishda yaxshi
+          natija ko‘rsatmoqda. Ingliz tilida
+          qiziqish pasaygani uchun aynan shu
+          yo‘nalishga e’tibor berish tavsiya qilinadi.
+
+        </div>
+
+
+        <button
+          onclick="showAIAnalysis()"
+          class="mt-5 w-full rounded-xl bg-cyan-400 py-3 font-bold text-slate-950"
+        >
+          🤖 AI tahlilni ochish
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- PROGRESS -->
+
+    <div class="mt-6 grid gap-6 lg:grid-cols-2">
+
+
+      <div class="glass-card">
+
+        <div class="flex items-center justify-between">
+
+          <div>
+
+            <p class="text-xs text-slate-500">
+              6 oylik trend
+            </p>
+
+            <h2 class="text-2xl font-black">
+              Rivojlanish
+            </h2>
+
+          </div>
+
+          <span class="status-green">
+            +18%
+          </span>
+
+        </div>
+
+
+        <div class="big-chart mt-8">
+
+          <div class="big-bar h-[43%]"></div>
+          <div class="big-bar h-[48%]"></div>
+          <div class="big-bar h-[52%]"></div>
+          <div class="big-bar h-[59%]"></div>
+          <div class="big-bar h-[67%]"></div>
+          <div class="big-bar h-[78%]"></div>
+
+        </div>
+
+
+        <div class="mt-3 flex justify-between text-xs text-slate-600">
+
+          <span>Fev</span>
+          <span>Mar</span>
+          <span>Apr</span>
+          <span>May</span>
+          <span>Iyun</span>
+          <span>Iyul</span>
+
+        </div>
+
+      </div>
+
+
+      <!-- INTEREST -->
+
+      <div class="glass-card">
+
+        <p class="text-xs text-slate-500">
+          Qiziqish monitoringi
+        </p>
+
+        <h2 class="mt-1 text-2xl font-black">
+          Nimalarga qiziqyapti?
+        </h2>
+
+
+        <div class="mt-6 space-y-5">
+
+          <Interest
+            name="Texnologiya"
+            value="88"
+            icon="💻"
+          ></Interest>
+
+          <Interest
+            name="Sport"
+            value="74"
+            icon="⚽"
+          ></Interest>
+
+          <Interest
+            name="Matematika"
+            value="69"
+            icon="🧮"
+          ></Interest>
+
+          <Interest
+            name="Ingliz tili"
+            value="54"
+            icon="🇬🇧"
+            danger="true"
+          ></Interest>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- 30 DAY PLAN -->
+
+    <div class="glass-card mt-6">
+
+      <div class="flex flex-col justify-between gap-3 md:flex-row md:items-center">
+
+        <div>
+
+          <p class="text-xs text-slate-500">
+            Shaxsiy rivojlanish
+          </p>
+
+          <h2 class="text-2xl font-black">
+            30 kunlik reja
+          </h2>
+
+        </div>
+
+        <button
+          onclick="generatePlan()"
+          class="rounded-xl bg-white px-5 py-3 text-sm font-black text-slate-950"
+        >
+          ✨ Rejani yaratish
+        </button>
+
+      </div>
+
+
+      <div
+        id="planContainer"
+        class="mt-6 grid gap-4 md:grid-cols-3"
+      >
+
+        <div class="plan-card">
+          <span>1-hafta</span>
+          <strong>Qiziqishni aniqlash</strong>
+          <p>
+            Bolaga mos qiziqarli topshiriqlar va
+            kichik maqsadlar.
+          </p>
+        </div>
+
+
+        <div class="plan-card">
+          <span>2-hafta</span>
+          <strong>Mustahkamlash</strong>
+          <p>
+            Qiyin mavzularni kichik qismlarga bo‘lib o‘rganish.
+          </p>
+        </div>
+
+
+        <div class="plan-card">
+          <span>3–4-hafta</span>
+          <strong>Natijani tekshirish</strong>
+          <p>
+            Yangi natijalarni avvalgi ko‘rsatkichlar bilan taqqoslash.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ACTIVITY -->
+
+    <div class="glass-card mt-6">
+
+      <div class="flex items-center justify-between">
+
+        <div>
+
+          <p class="text-xs text-slate-500">
+            So‘nggi faoliyat
+          </p>
+
+          <h2 class="text-2xl font-black">
+            Kuzatuvlar
+          </h2>
+
+        </div>
+
+        <button
+          onclick="addActivity()"
+          class="rounded-xl bg-white/5 px-4 py-2 text-sm hover:bg-white/10"
+        >
+          + Natija qo‘shish
+        </button>
+
+      </div>
+
+
+      <div
+        id="activityList"
+        class="mt-6 space-y-3"
+      ></div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     AUTH MODAL
+========================================================= -->
+
+<div
+  id="authModal"
+  class="modal hidden"
+>
+
+  <div class="modal-overlay" onclick="closeModal('authModal')"></div>
+
+  <div class="modal-card">
+
+    <button
+      onclick="closeModal('authModal')"
+      class="modal-close"
+    >
+      ×
+    </button>
+
+
+    <div class="text-center">
+
+      <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-600 text-xl font-black">
+        K
+      </div>
+
+      <h2
+        id="authTitle"
+        class="mt-5 text-2xl font-black"
+      >
+        Akkaunt yaratish
+      </h2>
+
+      <p
+        id="authSubtitle"
+        class="mt-2 text-sm text-slate-500"
+      >
+        Farzandingiz rivojlanishini kuzatishni boshlang.
+      </p>
+
+    </div>
+
+
+    <form
+      id="authForm"
+      onsubmit="handleAuth(event)"
+      class="mt-7 space-y-4"
+    >
+
+      <div id="nameField">
+
+        <label class="input-label">
+          Ismingiz
+        </label>
+
+        <input
+          id="authName"
+          type="text"
+          class="normal-input"
+          placeholder="Ismingizni kiriting"
+        >
+
+      </div>
+
+
+      <div>
+
+        <label class="input-label">
+          Email
+        </label>
+
+        <input
+          id="authEmail"
+          type="email"
+          required
+          class="normal-input"
+          placeholder="example@gmail.com"
+        >
+
+      </div>
+
+
+      <div>
+
+        <label class="input-label">
+          Parol
+        </label>
+
+        <input
+          id="authPassword"
+          type="password"
+          required
+          minlength="4"
+          class="normal-input"
+          placeholder="••••••••"
+        >
+
+      </div>
+
+
+      <button
+        type="submit"
+        id="authSubmit"
+        class="primary-button w-full"
+      >
+        Akkaunt yaratish
+      </button>
+
+    </form>
+
+
+    <div class="my-5 flex items-center gap-3">
+
+      <div class="h-px flex-1 bg-white/10"></div>
+
+      <span class="text-xs text-slate-600">
+        YOKI
+      </span>
+
+      <div class="h-px flex-1 bg-white/10"></div>
+
+    </div>
+
+
+    <button
+      onclick="socialLogin('Google')"
+      class="social-button"
+    >
+      <span>G</span>
+      Google bilan davom etish
+    </button>
+
+
+    <button
+      onclick="socialLogin('Facebook')"
+      class="social-button mt-3"
+    >
+      <span>f</span>
+      Facebook bilan davom etish
+    </button>
+
+
+    <button
+      id="authSwitch"
+      onclick="switchAuthMode()"
+      class="mt-6 w-full text-center text-sm text-cyan-300"
+    >
+      Akkauntingiz bormi? Kirish
+
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     CHILD MODAL
+========================================================= -->
+
+<div
+  id="childModal"
+  class="modal hidden"
+>
+
+  <div class="modal-overlay" onclick="closeModal('childModal')"></div>
+
+  <div class="modal-card">
+
+    <button
+      onclick="closeModal('childModal')"
+      class="modal-close"
+    >
+      ×
+    </button>
+
+    <h2 class="text-2xl font-black">
+      Farzand qo‘shish
+    </h2>
+
+    <p class="mt-2 text-sm text-slate-500">
+      Farzandingiz haqida asosiy ma’lumotlarni kiriting.
+    </p>
+
+
+    <form
+      onsubmit="saveChild(event)"
+      class="mt-6 space-y-4"
+    >
+
+      <input
+        id="newChildName"
+        required
+        class="normal-input"
+        placeholder="Farzand ismi"
+      >
+
+      <input
+        id="newChildAge"
+        required
+        type="number"
+        min="5"
+        max="25"
+        class="normal-input"
+        placeholder="Yoshi"
+      >
+
+      <button
+        class="primary-button w-full"
+      >
+        Farzandni qo‘shish
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     SUBJECT MODAL
+========================================================= -->
+
+<div
+  id="subjectModal"
+  class="modal hidden"
+>
+
+  <div class="modal-overlay" onclick="closeModal('subjectModal')"></div>
+
+  <div class="modal-card">
+
+    <button
+      onclick="closeModal('subjectModal')"
+      class="modal-close"
+    >
+      ×
+    </button>
+
+    <h2 class="text-2xl font-black">
+      Fan qo‘shish
+    </h2>
+
+
+    <form
+      onsubmit="saveSubject(event)"
+      class="mt-6 space-y-4"
+    >
+
+      <input
+        id="newSubjectName"
+        required
+        class="normal-input"
+        placeholder="Masalan: Fizika"
+      >
+
+      <input
+        id="newSubjectScore"
+        required
+        type="number"
+        min="0"
+        max="100"
+        class="normal-input"
+        placeholder="Natija: 0–100"
+      >
+
+      <button
+        class="primary-button w-full"
+      >
+        Qo‘shish
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     AI MODAL
+========================================================= -->
+
+<div
+  id="aiModal"
+  class="modal hidden"
+>
+
+  <div class="modal-overlay" onclick="closeModal('aiModal')"></div>
+
+  <div class="modal-card max-w-2xl">
+
+    <button
+      onclick="closeModal('aiModal')"
+      class="modal-close"
+    >
+      ×
+    </button>
+
+
+    <div class="flex items-center gap-4">
+
+      <div class="ai-icon large">
+        ✨
+      </div>
+
+      <div>
+
+        <p class="text-xs uppercase tracking-widest text-cyan-300">
+          AI Mentor
+        </p>
+
+        <h2 class="text-2xl font-black">
+          Rivojlanish tahlili
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <div
+      id="aiAnalysisContent"
+      class="mt-7 space-y-4"
+    ></div>
+
+
+    <div class="mt-6 rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+
+      <p class="text-xs text-slate-500">
+        Muhim
+      </p>
+
+      <p class="mt-2 text-sm leading-7 text-slate-400">
+        AI tavsiyalari mavjud ma’lumotlarga asoslangan yordamchi
+        tavsiyalardir. Ular professional ta’lim yoki psixologik
+        baholash o‘rnini bosmaydi.
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     TOAST
+========================================================= -->
+
+<div
+  id="toast"
+  class="toast hidden"
+></div>
+
+
+<script src="script.js"></script>
+
 </body>
 </html>
